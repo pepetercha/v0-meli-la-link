@@ -1,42 +1,31 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import "./globals.css";
-
-const geist = Geist({ subsets: ["latin"] });
-const geistMono = Geist_Mono({ subsets: ["latin"] });
+import type { Metadata } from 'next';
+import { Toaster } from 'sonner';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "VALDOCER | Links",
-  description: "Todos mis enlaces y redes",
-  generator: "v0.app",
-  icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+  title: 'VALDOCER - Plataforma de Enlaces',
+  description: 'Mi espacio digital con todos mis enlaces, redes sociales y contenido favorito en un solo lugar.',
+  openGraph: {
+    title: 'VALDOCER',
+    description: 'Plataforma de Enlaces Personal',
+    type: 'website',
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="es">
-      <body className={`${geist.className} ${geistMono.className} font-sans antialiased`}>
+      <body className="bg-slate-950 text-slate-50 antialiased">
         {children}
-        <Analytics />
-        <SpeedInsights />
+        <Toaster
+          theme="dark"
+          position="bottom-right"
+          richColors
+        />
       </body>
     </html>
   );
